@@ -54,7 +54,7 @@ SELECT
 	employees.last_name,
 	employees.sex 
 FROM employees
-WHERE employees.first_name ='Hercules' AND employees.last_name LIKE 'B%' ;
+WHERE employees.first_name = 'Hercules' AND employees.last_name LIKE 'B%' ;
 
 
 -- 6.List each employee in the Sales department, including their employee number, last name, 
@@ -68,17 +68,6 @@ FROM employees
 INNER JOIN dept_emp ON  employees.emp_no = dept_emp.emp_no 
 INNER JOIN departments ON  dept_emp.dept_no = departments.dept_no 
 WHERE departments.dept_name = 'Sales';
---WHERE employees.emp_no IN
---	(
---	SELECT dept_emp.emp_no
---	FROM dept_emp
---	WHERE dept_emp.dept_no IN
---		(
---		SELECT departments.dept_no
---		FROM departments
---		WHERE departments.dept_name = 'Sales'
---		)
---	);
 
 
 -- 7.List each employee in the Sales and Development departments, including their employee number, 
@@ -92,17 +81,6 @@ FROM employees
 INNER JOIN dept_emp ON  employees.emp_no = dept_emp.emp_no 
 INNER JOIN departments ON  dept_emp.dept_no = departments.dept_no 
 WHERE departments.dept_name = 'Sales' OR departments.dept_name = 'Development'
---WHERE employees.emp_no IN
---   (
---	SELECT dept_emp.emp_no
---	FROM dept_emp
---	WHERE dept_emp.dept_no IN
---	   (
---		SELECT departments.dept_no
---		FROM departments
---		WHERE departments.dept_name = 'Sales' OR departments.dept_name = 'Development'
---	   ) 
---);
 
 
 -- 8.List the frequency counts, in descending order, of all the employee last names 
