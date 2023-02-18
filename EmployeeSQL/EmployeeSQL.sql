@@ -61,12 +61,6 @@ CREATE TABLE salaries (
 );
 
 
-SELECT * FROM departments;
-SELECT * FROM dept_emp;
-SELECT * FROM dept_manager;
-SELECT * FROM employees;
-SELECT * FROM salaries;
-SELECT * FROM titles;
 
 -- 1. List the employee number, last name, first name, sex, and salary of each employee.
 SELECT 
@@ -138,17 +132,6 @@ FROM employees
 INNER JOIN dept_emp ON  employees.emp_no = dept_emp.emp_no 
 INNER JOIN departments ON  dept_emp.dept_no = departments.dept_no 
 WHERE departments.dept_name = 'Sales';
---WHERE employees.emp_no IN
---	(
---	SELECT dept_emp.emp_no
---	FROM dept_emp
---	WHERE dept_emp.dept_no IN
---		(
---		SELECT departments.dept_no
---		FROM departments
---		WHERE departments.dept_name = 'Sales'
---		)
---	);
 
 
 -- 7.List each employee in the Sales and Development departments, including their employee number, 
@@ -162,17 +145,6 @@ FROM employees
 INNER JOIN dept_emp ON  employees.emp_no = dept_emp.emp_no 
 INNER JOIN departments ON  dept_emp.dept_no = departments.dept_no 
 WHERE departments.dept_name = 'Sales' OR departments.dept_name = 'Development'
---WHERE employees.emp_no IN
---   (
---	SELECT dept_emp.emp_no
---	FROM dept_emp
---	WHERE dept_emp.dept_no IN
---	   (
---		SELECT departments.dept_no
---		FROM departments
---		WHERE departments.dept_name = 'Sales' OR departments.dept_name = 'Development'
---	   ) 
---);
 
 
 -- 8.List the frequency counts, in descending order, of all the employee last names 
